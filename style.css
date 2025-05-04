@@ -94,7 +94,7 @@ nav.right-nav a {
 
 
 .text-wrapper {
-  margin-top: 50px;
+  
   font-family: Arial;
   justify-content: center;
   align-items: center;
@@ -150,7 +150,7 @@ nav.right-nav a {
 
 .explore_button{
   font-size: 14px;
-  margin-top: 80px;
+  margin-top: 20px;
   text-decoration: none;
   color: black;
   font-family: sans-serif;
@@ -160,47 +160,99 @@ nav.right-nav a {
 
 
 .us_container {
-  padding: 100px 0px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   background-color: #000000;
   color: white;
+  position: relative; /* Crucial: Make the container a positioning context for the absolute video */
+  overflow: scroll; /* Optional: Hides any potential overflow from object-fit */
+  /* Add min-height to ensure it takes up enough space */
+  height: 100vh;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
 }
 
-.us_container video{
-    height: 395px;
-    width: 100%;
-    position: absolute;
-    object-fit: cover;
-    z-index: 0;
-    opacity: 50%;
-  }
+.us_container_backimg{
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; 
+  transition: all;
+  animation: 0.6s cubic-bezier(0.77, 0, 0.175, 1) 0.4s 1 normal forwards fadeIn;
+}
+
+.helpimg img{
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  opacity: 100%;
+}
 
 
-.us_hold_left {
-  padding-top: 1%;
-  padding-left: 10%;
+.helpimg{
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  transform: translate3d(0, 0, 0);
+  transition: transform 1.4s cubic-bezier(.645,.045,.355,1);
   z-index: 1;
+}
+
+.bgimg--active {
+  z-index: 3;
+  display: block;
+}
+
+.bgimg--prev {
+  z-index: 4;
+  transform: translate3d(0, -100%, 0);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.us_container_textholder{
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  background: rgba(0, 0, 0, 0.479);
+  animation: 0.4s 1 normal forwards fadeIn;
+  opacity: 0;
+}
+
+.us_container_text_first {
+  width: 50%;
+  text-align: center;
+}
+
+.us_container_text_first1 {
   text-transform: uppercase;
   font-family: Arial, Helvetica, sans-serif;
-  flex-basis: 30%;
   font-size: 60px;
 }
 
-.us_hold_right {
-  padding-top: 1%;
-  z-index: 1;
-  flex-basis: 50%; 
-  line-height: 1.6;
-}
-
-.us_hold_right p {
-  margin: 0;
-  width: 80%;
+.us_container_text_first2 {
   font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
   font-size: 18px;
 }
-
-
 
