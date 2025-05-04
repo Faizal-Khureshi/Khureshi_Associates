@@ -54,19 +54,47 @@ startInterval();
 window.addEventListener('scroll', () => {
     // Get the current scroll position
     const scrollPosition = window.scrollY || document.documentElement.scrollTop;
-    const elements = document.querySelectorAll('.helpimg img');
 
     // If scrolled down 50px or more, stop the interval
     if (scrollPosition >= 50) {
-        stopInterval();
-        us_container_textholder.forEach(element => {
-          element.style.visibility = "";
-      });
+        // Assuming stopInterval and startInterval are defined elsewhere
+        if (typeof stopInterval === 'function') {
+            stopInterval();
+        }
     } else {
         // If scrolled back up above 50px, start the interval
-        startInterval();
-        us_container_textholder.forEach(element => {
-          element.style.visibility = "";
-      });
+        if (typeof startInterval === 'function') {
+            startInterval();
+        }
     }
 });
+
+
+
+window.addEventListener('scroll', () => {
+    // Get the current scroll position
+    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+    const us_container_textholder = document.querySelectorAll('.us_container_textholder');
+
+    // Define the scroll range over which the animation occurs (in pixels)
+    // Adjust this value to control how much the user needs to scroll for the div to fully appear
+    const animationScrollRange = 500; // Example: animation completes after scrolling 500px
+
+    // Calculate the progress of the scroll within the animation range
+    // Progress goes from 0 (at start of range) to 1 (at end of range)
+    const scrollProgress = Math.min(1, scrollPosition / animationScrollRange);
+
+    // Calculate the translateY percentage
+    // Starts at 100% (off-screen) and goes to 0% (fully visible)
+    const translateY_percentage = 100 - (scrollProgress * 100);
+
+    // Apply the transform to each selected element
+    us_container_textholder.forEach(element => {
+        element.style.transform = `translate3d(0, ${translateY_percentage}%, 0)`;
+    });
+});
+
+// Optional: Set initial position on page load
+// This ensures the div is in the correct starting position before any scrolling happens
+window.dispatchEvent(new Event('scroll'));
+

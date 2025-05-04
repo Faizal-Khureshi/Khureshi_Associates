@@ -66,7 +66,7 @@ nav.right-nav a {
 
 
 .face_content_holder {
-    z-index: 2;
+    z-index: 9;
     color: white;
     padding-top: 200px;
     padding-bottom: 50px;
@@ -227,21 +227,27 @@ nav.right-nav a {
 }
 
 .us_container_textholder{
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 2em;
+  z-index: 5;
+  transform: translate3d(0, 100%, 0);
+  overflow-y: auto;
   display: flex;
+  text-align: center;
   justify-content: center;
   align-items: center;
-  z-index: 5;
-  background: rgba(0, 0, 0, 0.479);
-  animation: 0.4s 1 normal forwards fadeIn;
-  opacity: 0;
+  flex-direction: column;
 }
 
-.us_container_text_first {
+
+.us_container_text{
   width: 50%;
-  text-align: center;
 }
 
 .us_container_text_first1 {
@@ -251,6 +257,7 @@ nav.right-nav a {
 }
 
 .us_container_text_first2 {
+  text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
   font-size: 18px;
