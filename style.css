@@ -160,38 +160,46 @@ nav.right-nav a {
 
 
 .us_container {
-  padding: 100px 0px;
+  padding: 50px 0px; /* Reduced padding */
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #000000;
   color: white;
+  position: relative; /* Crucial: Make the container a positioning context for the absolute video */
+  overflow: hidden; /* Optional: Hides any potential overflow from object-fit */
+  /* Add min-height to ensure it takes up enough space */
+  min-height: 100vh; /* Reduced minimum height */
+  padding-left: 10%; /* Add padding to the left */
+  padding-right: 10%; /* Add padding to the right */
+  box-sizing: border-box; /* Include padding in element's total width and height */
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
 }
 
 .us_container video{
-    height: 395px;
-    width: 100%;
-    position: absolute;
-    object-fit: cover;
-    z-index: 0;
-    opacity: 50%;
-  }
-
+  position: absolute;
+  top: 0;    /* Position from the top edge of the container's padding box */
+  left: 0;   /* Position from the left edge of the container's padding box */
+  right: 0;  /* Position from the right edge of the container's padding box */
+  bottom: 0; /* Position from the bottom edge of the container's padding box */
+  width: 180%; /* Ensure it explicitly takes 100% width */
+  height: 100%; /* Ensure it explicitly takes 100% height */
+  object-fit: cover; /* Ensure the video covers the entire area, may crop the video content */
+  z-index: 0; /* Keep behind the content */
+  opacity: 50%; /* Keep the opacity */
+}
 
 .us_hold_left {
-  padding-top: 1%;
-  padding-left: 10%;
+
   z-index: 1;
   text-transform: uppercase;
   font-family: Arial, Helvetica, sans-serif;
-  flex-basis: 30%;
   font-size: 60px;
 }
 
 .us_hold_right {
   padding-top: 1%;
   z-index: 1;
-  flex-basis: 50%; 
   line-height: 1.6;
 }
 
@@ -203,4 +211,154 @@ nav.right-nav a {
 }
 
 
+
+/* Define CSS variables for slide width and gap */
+:root {
+  --slide-width: 400px; /* Adjust as needed */
+  --gap-width: 20px; /* Adjust as needed */
+}
+
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex; /* Use flexbox for the two-column layout */
+  gap: 40px; /* Space between columns */
+  flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+  align-items: center; /* Vertically center items */
+}
+
+/* Left Column Styling */
+.left-column {
+  flex: 1; /* Allow left column to grow */
+  min-width: 300px; /* Minimum width for the left column */
+  max-width: 500px; /* Maximum width for the left column */
+  text-align: left;
+}
+
+.left-column h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.left-column p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.left-column .cta-button {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.left-column .cta-button:hover {
+  background-color: #0056b3;
+}
+
+/* Right Column Styling (Gallery/Carousel Wrapper) */
+.gallery-wrapper {
+  flex: 1; /* Allow right column to grow */
+  min-width: 300px; /* Minimum width for the right column */
+  position: relative; /* Needed for overflow to work correctly */
+  overflow: hidden; /* Hide overflowing parts of the image */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex; /* Use flexbox to contain the track */
+  align-items: center; /* Vertically center the track if needed */
+}
+
+.gallery-track {
+  display: flex; /* Arrange slides horizontally */
+  transition: transform 0.5s ease-in-out; /* Smooth sliding animation */
+  /* Removed padding here */
+  /* padding-left: calc(50% - (var(--slide-width) / 2)); */
+  /* padding-right: calc(50% - (var(--slide-width) / 2)); */
+  box-sizing: border-box;
+}
+
+.gallery-slide {
+  flex-shrink: 0; /* Prevent slides from shrinking */
+  width: var(--slide-width); /* Use the CSS variable for slide width */
+  margin-right: var(--gap-width); /* Use the CSS variable for gap */
+  position: relative;
+  display: flex; /* Use flexbox to stack image and caption */
+  flex-direction: column; /* Stack children vertically */
+  align-items: flex-start; /* Align children to the start (left) */
+}
+
+.gallery-slide:last-child {
+  margin-right: 0; /* No margin after the last slide */
+}
+
+
+.gallery-slide img {
+  display: block;
+  width: 100%; /* Image fills the slide width */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Cover the slide area */
+  border-radius: 10px; /* Rounded corners for images */
+  margin-bottom: 10px; /* Space below the image */
+}
+
+/* Image Caption Styling (Below the image) */
+.image-caption {
+  /* Removed absolute positioning */
+  /* position: absolute; */
+  /* bottom: 10px; */
+  /* left: 10px; */
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent dark background */
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 14px;
+  /* Removed z-index as it's no longer absolutely positioned */
+  /* z-index: 2; */
+  width: calc(100% - 20px); /* Take full width minus padding */
+  text-align: left; /* Align text to the left */
+  box-sizing: border-box; /* Include padding in width */
+  /* Added margin-top to ensure space below the image */
+  /* margin-top: 10px; /* This is now handled by img margin-bottom */
+}
+
+/* Controls Styling (Below the gallery wrapper) */
+.gallery-controls {
+  margin-top: 20px; /* Space above the controls */
+  display: flex; /* Use flexbox to arrange items */
+  justify-content: center; /* Center the controls horizontally */
+  align-items: center; /* Vertically align items */
+  gap: 15px; /* Space between items */
+  padding: 10px 15px; /* Padding around controls */
+  width: 100%; /* Take full width of the container */
+  box-sizing: border-box;
+}
+
+.gallery-controls .nav-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.gallery-controls .nav-button:hover {
+  background-color: #0056b3;
+}
+
+.gallery-controls .image-counter {
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+}
 
