@@ -98,3 +98,36 @@ window.addEventListener('scroll', () => {
 // This ensures the div is in the correct starting position before any scrolling happens
 window.dispatchEvent(new Event('scroll'));
 
+
+const carousel = document.querySelector('.new_product_carousel');
+        const carouselCards = document.querySelectorAll('.new_product_carousel_card');
+        const carouselCounter = document.getElementById('carousel_counter');
+        let currentIndex = 0;
+        const totalImages = carouselCards.length;
+
+        // Function to update the counter text
+        function updateCounter() {
+            const currentNumber = (currentIndex + 1).toString().padStart(2, '0');
+            carouselCounter.textContent = `${currentNumber} / ${totalImages.toString().padStart(2, '0')}`;
+        }
+
+        // Function to scroll the carousel
+        function scrollCarousel(direction) {
+            const cardWidth = carouselCards[0].offsetWidth + 20; 
+            let newIndex = currentIndex + direction;
+
+            // Clamp the new index to prevent going out of bounds
+            newIndex = Math.max(0, Math.min(newIndex, totalImages - 1));
+
+            const scrollAmount = newIndex * cardWidth;
+
+            carousel.scrollTo({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+
+            currentIndex = newIndex;
+            updateCounter();
+        }
+
+        updateCounter();

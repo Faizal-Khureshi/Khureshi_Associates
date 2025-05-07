@@ -227,7 +227,7 @@ nav.right-nav a {
 }
 
 .us_container_textholder{
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -263,3 +263,115 @@ nav.right-nav a {
   font-size: 18px;
 }
 
+.new_product_holder{
+  height: 50vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.new_product_text{
+  background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  padding: 100px;
+  gap: 5px;
+}
+
+.new_product_text h1{
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+.new_product_text span{
+  padding: 0;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.new_product_carousel_container {
+  position: relative;
+  width: 70%;
+  overflow: hidden;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.new_product_carousel {
+  margin: 20px;
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth; 
+  gap: 20px;
+}
+
+.new_product_carousel_card {
+  width: 630px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.new_product_carousel_card:hover {
+  transform: translateY(-5px);
+}
+
+.new_product_carousel_card img {
+  display: block;
+  width: auto;
+  max-height: 40vh;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.new_product_carousel_card span {
+  display: block;
+  position: relative;
+  font-size: 1em;
+  padding: 5px;
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#carousel_counter {
+  font-size: 18px;
+  color: #555;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+.carousel_button_holder{
+  padding-right: 100px;
+  display: flex;
+  justify-content: right;
+  gap: 20px;
+  align-items: center;
+}
+
+.carousel_button_holder button{
+  padding: 0;
+  margin: 0;
+  background-color: #ffffff;
+  border: none;
+}
+
+.carousel_button_left img{
+  height: 35px;
+  rotate: -180deg;
+}
+
+.carousel_button_right img{
+  height: 35px;
+}
+
+.new_holder_idk{
+  height: 100vh;
+  width: 100%;
+  background-color: thistle;
+}
