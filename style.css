@@ -66,7 +66,7 @@ nav.right-nav a {
 
 
 .face_content_holder {
-    z-index: 2;
+    z-index: 9;
     color: white;
     padding-top: 200px;
     padding-bottom: 50px;
@@ -94,7 +94,7 @@ nav.right-nav a {
 
 
 .text-wrapper {
-  margin-top: 50px;
+  
   font-family: Arial;
   justify-content: center;
   align-items: center;
@@ -150,7 +150,7 @@ nav.right-nav a {
 
 .explore_button{
   font-size: 14px;
-  margin-top: 80px;
+  margin-top: 20px;
   text-decoration: none;
   color: black;
   font-family: sans-serif;
@@ -160,205 +160,106 @@ nav.right-nav a {
 
 
 .us_container {
-  padding: 50px 0px; /* Reduced padding */
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   background-color: #000000;
   color: white;
   position: relative; /* Crucial: Make the container a positioning context for the absolute video */
-  overflow: hidden; /* Optional: Hides any potential overflow from object-fit */
+  overflow: scroll; /* Optional: Hides any potential overflow from object-fit */
   /* Add min-height to ensure it takes up enough space */
-  min-height: 100vh; /* Reduced minimum height */
-  padding-left: 10%; /* Add padding to the left */
-  padding-right: 10%; /* Add padding to the right */
-  box-sizing: border-box; /* Include padding in element's total width and height */
+  height: 100vh;
   flex-wrap: wrap; /* Allow items to wrap on smaller screens */
 }
 
-.us_container video{
-  position: absolute;
-  top: 0;    /* Position from the top edge of the container's padding box */
-  left: 0;   /* Position from the left edge of the container's padding box */
-  right: 0;  /* Position from the right edge of the container's padding box */
-  bottom: 0; /* Position from the bottom edge of the container's padding box */
-  width: 180%; /* Ensure it explicitly takes 100% width */
-  height: 100%; /* Ensure it explicitly takes 100% height */
-  object-fit: cover; /* Ensure the video covers the entire area, may crop the video content */
-  z-index: 0; /* Keep behind the content */
-  opacity: 50%; /* Keep the opacity */
+.us_container_backimg{
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; 
+  transition: all;
+  animation: 0.6s cubic-bezier(0.77, 0, 0.175, 1) 0.4s 1 normal forwards fadeIn;
 }
 
-.us_hold_left {
+.helpimg img{
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  opacity: 100%;
+}
 
+
+.helpimg{
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  transform: translate3d(0, 0, 0);
+  transition: transform 1.4s cubic-bezier(.645,.045,.355,1);
   z-index: 1;
+}
+
+.bgimg--active {
+  z-index: 3;
+  display: block;
+}
+
+.bgimg--prev {
+  z-index: 4;
+  transform: translate3d(0, -100%, 0);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.us_container_textholder{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 2em;
+  z-index: 5;
+  transform: translate3d(0, 100%, 0);
+  overflow-y: auto;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.us_container_text{
+  width: 60%;
+}
+
+.us_container_text_first1 {
   text-transform: uppercase;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 60px;
 }
 
-.us_hold_right {
-  padding-top: 1%;
-  z-index: 1;
-  line-height: 1.6;
-}
-
-.us_hold_right p {
-  margin: 0;
-  width: 80%;
+.us_container_text_first2 {
+  text-align: center;
   font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
   font-size: 18px;
-}
-
-
-
-/* Define CSS variables for slide width and gap */
-:root {
-  --slide-width: 400px; /* Adjust as needed */
-  --gap-width: 20px; /* Adjust as needed */
-}
-
-
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  display: flex; /* Use flexbox for the two-column layout */
-  gap: 40px; /* Space between columns */
-  flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
-  align-items: center; /* Vertically center items */
-}
-
-/* Left Column Styling */
-.left-column {
-  flex: 1; /* Allow left column to grow */
-  min-width: 300px; /* Minimum width for the left column */
-  max-width: 500px; /* Maximum width for the left column */
-  text-align: left;
-}
-
-.left-column h1 {
-  font-size: 48px;
-  margin-bottom: 20px;
-  line-height: 1.1;
-}
-
-.left-column p {
-  font-size: 18px;
-  margin-bottom: 30px;
-}
-
-.left-column .cta-button {
-  display: inline-block;
-  background-color: #007bff;
-  color: white;
-  padding: 12px 25px;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-.left-column .cta-button:hover {
-  background-color: #0056b3;
-}
-
-/* Right Column Styling (Gallery/Carousel Wrapper) */
-.gallery-wrapper {
-  flex: 1; /* Allow right column to grow */
-  min-width: 300px; /* Minimum width for the right column */
-  position: relative; /* Needed for overflow to work correctly */
-  overflow: hidden; /* Hide overflowing parts of the image */
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex; /* Use flexbox to contain the track */
-  align-items: center; /* Vertically center the track if needed */
-}
-
-.gallery-track {
-  display: flex; /* Arrange slides horizontally */
-  transition: transform 0.5s ease-in-out; /* Smooth sliding animation */
-  /* Removed padding here */
-  /* padding-left: calc(50% - (var(--slide-width) / 2)); */
-  /* padding-right: calc(50% - (var(--slide-width) / 2)); */
-  box-sizing: border-box;
-}
-
-.gallery-slide {
-  flex-shrink: 0; /* Prevent slides from shrinking */
-  width: var(--slide-width); /* Use the CSS variable for slide width */
-  margin-right: var(--gap-width); /* Use the CSS variable for gap */
-  position: relative;
-  display: flex; /* Use flexbox to stack image and caption */
-  flex-direction: column; /* Stack children vertically */
-  align-items: flex-start; /* Align children to the start (left) */
-}
-
-.gallery-slide:last-child {
-  margin-right: 0; /* No margin after the last slide */
-}
-
-
-.gallery-slide img {
-  display: block;
-  width: 100%; /* Image fills the slide width */
-  height: auto; /* Maintain aspect ratio */
-  object-fit: cover; /* Cover the slide area */
-  border-radius: 10px; /* Rounded corners for images */
-  margin-bottom: 10px; /* Space below the image */
-}
-
-/* Image Caption Styling (Below the image) */
-.image-caption {
-  /* Removed absolute positioning */
-  /* position: absolute; */
-  /* bottom: 10px; */
-  /* left: 10px; */
-  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent dark background */
-  color: white;
-  padding: 5px 10px;
-  border-radius: 3px;
-  font-size: 14px;
-  /* Removed z-index as it's no longer absolutely positioned */
-  /* z-index: 2; */
-  width: calc(100% - 20px); /* Take full width minus padding */
-  text-align: left; /* Align text to the left */
-  box-sizing: border-box; /* Include padding in width */
-  /* Added margin-top to ensure space below the image */
-  /* margin-top: 10px; /* This is now handled by img margin-bottom */
-}
-
-/* Controls Styling (Below the gallery wrapper) */
-.gallery-controls {
-  margin-top: 20px; /* Space above the controls */
-  display: flex; /* Use flexbox to arrange items */
-  justify-content: center; /* Center the controls horizontally */
-  align-items: center; /* Vertically align items */
-  gap: 15px; /* Space between items */
-  padding: 10px 15px; /* Padding around controls */
-  width: 100%; /* Take full width of the container */
-  box-sizing: border-box;
-}
-
-.gallery-controls .nav-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 18px;
-  transition: background-color 0.3s ease;
-}
-
-.gallery-controls .nav-button:hover {
-  background-color: #0056b3;
-}
-
-.gallery-controls .image-counter {
-  font-size: 16px;
-  color: #333;
-  font-weight: bold;
 }
 
