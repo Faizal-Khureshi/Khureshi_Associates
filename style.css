@@ -37,6 +37,10 @@ nav {
 }
 
 .center-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     margin-left: -50px;
 }
 
@@ -46,6 +50,12 @@ nav {
     font-size: 14px;
     font-family: sans-serif;
     text-transform: uppercase;
+}
+
+.center-nav img{
+  position: relative;
+  height: 25px;
+  top: 5px;
 }
 
 
@@ -64,19 +74,139 @@ nav.right-nav a {
     text-transform: uppercase;
 }
 
+.nav_hover{
+  background-color: #000000;
+  position: absolute; /* Positioned absolutely relative to the nearest positioned ancestor */
+  height: 35vh;
+  width: 1200px;
+  z-index: 10;
+  display: flex;
+  flex-direction: row;
+  border: solid rgb(0, 0, 0);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.product_hover{
+  display: flex; /* Make product_hover a flex container */
+  flex-direction: row; /* Arrange its children (product_links and slideshow) in a row */
+  width: 100%; /* Ensure product_hover takes the full width of nav_hover */
+  height: 100%;
+}
+
+.product_links{
+  padding: 0;
+  margin: 0;
+  width: 60%; 
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.product_links_column1{
+  width: 30%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 1rem;
+}
+
+.product_links_column1 h1{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #757575;
+}
+
+.product_links_column1 a {
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.product_links_column2{
+  width: 30%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 1rem;
+}
+
+.product_links_column2 h1{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #757575;
+}
+
+.product_links_column2 a {
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.product_links_column3{
+  width: 30%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 1rem;
+}
+
+.product_links_column3 h1{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #757575;
+}
+
+.product_links_column3 a {
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.product_links_column3_below{
+  padding-top: 50%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 1rem;
+}
+
+.product_links_column3_below img{
+  height: 25px;
+  top: 5px;
+}
+
+.new_product_sildeshow{
+  padding: 0;
+  margin: 0;
+  width: 40%;
+  height: 100%;
+}
 
 .face_content_holder {
-    z-index: 9;
-    color: white;
-    padding-top: 200px;
-    padding-bottom: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    background-color: #000000;
+  z-index: 9;
+  color: white;
+  padding-top: 200px;
+  padding-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  background-color: #d83c3c;
 }
 
 .face_content_text h1 {
