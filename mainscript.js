@@ -209,7 +209,7 @@ window.addEventListener('scroll', () => {
 
             const options = {
               root: null,
-              rootMargin: '0px 0px -120% 0px',
+              rootMargin: '0px 0px -110% 0px',
               threshold: 0,
             };
 
